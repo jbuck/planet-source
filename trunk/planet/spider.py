@@ -286,6 +286,7 @@ def writeCache(feed_uri, feed_info, data):
     if not os.path.exists(sources): os.makedirs(sources)
     xdoc=minidom.parseString('''<feed xmlns:planet="%s"
       xmlns="http://www.w3.org/2005/Atom"/>\n''' % planet.xmlns)
+    print data
     reconstitute.source(xdoc.documentElement,data.feed,data.bozo,data.version)
     write(xdoc.toxml().encode('utf-8'), filename(sources, feed_uri))
     xdoc.unlink()
